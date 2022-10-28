@@ -1,0 +1,177 @@
+<enviNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="3.10">
+    <idLote>105408081</idLote>
+    <indSinc>0</indSinc>
+    <NFe>
+        <infNFe Id="NFe15180301155439000156650100000000031000000801" versao="3.10">
+            <ide>
+                <cUF>15</cUF>
+                <cNF>00000080</cNF>
+                <natOp>VENDA DENTRO DO ESTADO</natOp>
+                <indPag>0</indPag>
+                <mod>65</mod>
+                <serie>10</serie>
+                <nNF>3</nNF>
+                <dhEmi>2018-03-29T13:32:09-03:00</dhEmi>
+                <tpNF>1</tpNF>
+                <idDest>1</idDest>
+                <cMunFG>1501402</cMunFG>
+                <tpImp>4</tpImp>
+                <tpEmis>1</tpEmis>
+                <cDV>1</cDV>
+                <tpAmb>1</tpAmb>
+                <finNFe>1</finNFe>
+                <indFinal>1</indFinal>
+                <indPres>1</indPres>
+                <procEmi>0</procEmi>
+                <verProc>DPDV_2.0</verProc>
+            </ide>
+            <emit>
+                <CNPJ>01155439000156</CNPJ>
+                <xNome>DESTAK COMERCIO E SERVICOS LTDA</xNome>
+                <xFant>DESTAK</xFant>
+                <enderEmit>
+                    <xLgr>AVE GOVERNADOR MAGALHAES BARATA</xLgr>
+                    <nro>196</nro>
+                    <xBairro>SAO BRAS</xBairro>
+                    <cMun>1501402</cMun>
+                    <xMun>BELEM</xMun>
+                    <UF>PA</UF>
+                    <CEP>66015020</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>BRASIL</xPais>
+                </enderEmit>
+                <IE>151895171</IE>
+                <CRT>3</CRT>
+            </emit>
+            <det nItem="1">
+                <prod>
+                    <cProd>285</cProd>
+                    <cEAN>7890000002851</cEAN>
+                    <xProd>CLIPS N 5 COL. C/100 CHAPARRAU C/10CX</xProd>
+                    <NCM>83059000</NCM>
+                    <CFOP>5102</CFOP>
+                    <uCom>UN</uCom>
+                    <qCom>1</qCom>
+                    <vUnCom>30</vUnCom>
+                    <vProd>30.00</vProd>
+                    <cEANTrib>7890000002851</cEANTrib>
+                    <uTrib>UN</uTrib>
+                    <qTrib>1</qTrib>
+                    <vUnTrib>30</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>10.97</vTotTrib>
+                    <ICMS>
+                        <ICMSSN102>
+                            <orig>0</orig>
+                            <CSOSN>102</CSOSN>
+                        </ICMSSN102>
+                    </ICMS>
+                    <PIS>
+                        <PISNT>
+                            <CST>07</CST>
+                        </PISNT>
+                    </PIS>
+                    <COFINS>
+                        <COFINSNT>
+                            <CST>07</CST>
+                        </COFINSNT>
+                    </COFINS>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>0.00</vBC>
+                    <vICMS>0.00</vICMS>
+                    <vICMSDeson>0.00</vICMSDeson>
+                    <vBCST>0.00</vBCST>
+                    <vST>0.00</vST>
+                    <vProd>30.00</vProd>
+                    <vFrete>0.00</vFrete>
+                    <vSeg>0.00</vSeg>
+                    <vDesc>0.00</vDesc>
+                    <vII>0.00</vII>
+                    <vIPI>0.00</vIPI>
+                    <vPIS>0.00</vPIS>
+                    <vCOFINS>0.00</vCOFINS>
+                    <vOutro>0.00</vOutro>
+                    <vNF>30.00</vNF>
+                    <vTotTrib>10.97</vTotTrib>
+                </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>9</modFrete>
+            </transp>
+            <pag>
+                <tPag>01</tPag>
+                <vPag>30.00</vPag>
+            </pag>
+            <infAdic>
+                <infCpl>OP : (10117 OP. DE CAIXA PDV 4) PDV : 54 VDA NRO: 105408081</infCpl>
+            </infAdic>
+        </infNFe>
+        <infNFeSupl>
+            <qrCode><![CDATA[https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam?chNFe=15180301155439000156650100000000031000000801&nVersao=100&tpAmb=1&dhEmi=323031382d30332d32395431333a33323a30392d30333a3030&vNF=30.00&vICMS=0.00&digVal=693532306b6e587034726335457a357a424933644f4439667538343d&cIdToken=000001&cHashQRCode=C95BBA7A3387A262FF0CCCBB8A362ACA1F8CAAC9]]></qrCode>
+        </infNFeSupl>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                <Reference URI="#NFe15180301155439000156650100000000031000000801">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    <DigestValue>i520knXp4rc5Ez5zBI3dOD9fu84=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>T1B/NZ6Muz5jz1i+LQj9Z31mqGSeN8xohFOLRpqnEP0yfc0QOOuiQdnTu5n+kveJ9/NemT87mrSP
+                oxaVglP0XLS2wcvRDC8+q9bkct6Pb/++ntCqUTJi491JnB+R4gc1qGtGGTIgdDFyGSWSDL11V1V5
+                nSwg4bPKZ0b1/U+cWw37stG4W/TGsu5w47WHnyDc7NdK/how2mV6ILiy4uTkEpAx23uyEwTecRLi
+                I875h05UekdNTTE0pXmgRuRr5QRY2UG3/RwokF0+Q0KN1x1EmLpYfsQ554IUNEeJttGMrs28sxss
+                jzlh5saN3LsWvPSumQV3dLmZ1eqQnHiOUVOsSw==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>MIIHzjCCBbagAwIBAgIIUAkXBTA6EMQwDQYJKoZIhvcNAQELBQAwgYkxCzAJBgNVBAYTAkJSMRMw
+                        EQYDVQQKEwpJQ1AtQnJhc2lsMTQwMgYDVQQLEytBdXRvcmlkYWRlIENlcnRpZmljYWRvcmEgUmFp
+                        eiBCcmFzaWxlaXJhIHYyMRIwEAYDVQQLEwlBQyBTT0xVVEkxGzAZBgNVBAMTEkFDIFNPTFVUSSBN
+                        dWx0aXBsYTAeFw0xNzA2MDYxMzU5MDBaFw0xODA1MzExMjM0MDBaMIHjMQswCQYDVQQGEwJCUjET
+                        MBEGA1UEChMKSUNQLUJyYXNpbDE0MDIGA1UECxMrQXV0b3JpZGFkZSBDZXJ0aWZpY2Fkb3JhIFJh
+                        aXogQnJhc2lsZWlyYSB2MjESMBAGA1UECxMJQUMgU09MVVRJMRswGQYDVQQLExJBQyBTT0xVVEkg
+                        TXVsdGlwbGExGjAYBgNVBAsTEUNlcnRpZmljYWRvIFBKIEExMTwwOgYDVQQDEzNERVNUQUsgQ09N
+                        RVJDSU8gRSBTRVJWSUNPUyBMVERBIC0gTUU6MDExNTU0MzkwMDAxNTYwggEiMA0GCSqGSIb3DQEB
+                        AQUAA4IBDwAwggEKAoIBAQC07zXk+RM06F6LlG7LHlwV2Molcc6fpiAhn2Ssz/9Td4vi3TBfHxMO
+                        BOzeCc+N1vwsgoxUuB6y8K7IEDYbcBThd3RDfBf7IKZVSYXLYFCkAx5PCrWna5LH7FM/KZ95Z/US
+                        tZkUoIln6oanjJv5cY0ov+DRee1ki1SKhItMulke23PRMoWP7jR/weB1Zv80JjSt2QA3W1kffnqZ
+                        EhZErd4IME6rnW668TOLquIFv+rx0zliX1ASthPba+PZwqTopHPsWFi8gNnv1B3zfV1z1ZWv7pjA
+                        lzreNcDZx5Dz+jdopZjD5HOOukz2CkyvjMR+xtV0JKs7Qvx7pOooHduelCVZAgMBAAGjggLcMIIC
+                        2DBUBggrBgEFBQcBAQRIMEYwRAYIKwYBBQUHMAKGOGh0dHA6Ly9jY2QuYWNzb2x1dGkuY29tLmJy
+                        L2xjci9hYy1zb2x1dGktbXVsdGlwbGEtdjEucDdiMB0GA1UdDgQWBBTe5e+rguu8SAsVvi0fP/GH
+                        lkMNTTAJBgNVHRMEAjAAMB8GA1UdIwQYMBaAFDWuMRT2XtJ6T1j+NKgaZ5cKxJsHMF4GA1UdIARX
+                        MFUwUwYGYEwBAgEmMEkwRwYIKwYBBQUHAgEWO2h0dHBzOi8vY2NkLmFjc29sdXRpLmNvbS5ici9k
+                        b2NzL2RwYy1hYy1zb2x1dGktbXVsdGlwbGEucGRmMIHeBgNVHR8EgdYwgdMwPqA8oDqGOGh0dHA6
+                        Ly9jY2QuYWNzb2x1dGkuY29tLmJyL2xjci9hYy1zb2x1dGktbXVsdGlwbGEtdjEuY3JsMD+gPaA7
+                        hjlodHRwOi8vY2NkMi5hY3NvbHV0aS5jb20uYnIvbGNyL2FjLXNvbHV0aS1tdWx0aXBsYS12MS5j
+                        cmwwUKBOoEyGSmh0dHA6Ly9yZXBvc2l0b3Jpby5pY3BicmFzaWwuZ292LmJyL2xjci9BQ1NPTFVU
+                        SS9hYy1zb2x1dGktbXVsdGlwbGEtdjEuY3JsMA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUEFjAUBggr
+                        BgEFBQcDAgYIKwYBBQUHAwQwgcQGA1UdEQSBvDCBuYEYZGVzdGFrYnJhc2lsQGhvdG1haWwuY29t
+                        oCoGBWBMAQMCoCETH1JPU0VUVEUgREFSV0lDSCBaQUNBUklBUyBDQVNUUk+gGQYFYEwBAwOgEBMO
+                        MDExNTU0MzkwMDAxNTagPQYFYEwBAwSgNBMyMTMwMzE5MzkwMjQ1ODI0MTIwNDAwMDAwMDAwMDAw
+                        MDAwMDAwMDAzMzE5OTk0U1NQUEGgFwYFYEwBAwegDhMMMDAwMDAwMDAwMDAwMA0GCSqGSIb3DQEB
+                        CwUAA4ICAQAkehMXfQPj7rCxSpUZ189i9Jo1GzUUknC4pi4Nn8JCdxC56crBnXxm7tneieDD0MDB
+                        MOFNBCsgIOuLPPuoQMxWaWLzFLwzckBpNvoSY2WXsilwHLRarw3cJ5MscG5HmkpY5l6XOpLp8FDA
+                        80fIszTAT0BEEuQqrs23aU5wGPz4IGvut7OuIGNM/C8r6aNbKeCKaanR82/vvfmDwyKyW8HXOKYU
+                        gUKkq6bfzzYRurH6huq20UY4Jr0I0FOWgxANTSeLmfiOxLjrTYR5BDCiyJ7Rdr5rZXCxy9SN2f8N
+                        5Ms9DWbe0j5kY6ZYXl/WqLyLx8OSeXWmGQ7BXWlLNYuVgXnmfqbtPSnON7KyZGwV5g9SNbaJiowO
+                        gNGK+usKmRFRbm30bEaLHRrpBuvtYhF7ERl5vJkCgF1YmDaktNadL+gDY5hDjmoAvxj3vTKee8FZ
+                        xJ19dGICJSLVhjSJUdIv8s49KnnW1dq0JwhPncgyaCiErw/IzhqrEmi8ELvl6ZMPydy3jjG9vR+G
+                        QZYiLdZFvDq/VzRwL5Nx7OAkhBy4IdL+PNN9mqUF2nhHnwvm33Dx+itLHrv64MkcIeBCu5B+RV70
+                        vww+2q2ExIFe8mcG4G6x4KB7NDZfiPiCkHLKRmtaJfq9zE55sZ5n+iAnLkO5om9EW1fDH/Od87Ce
+                        s9/69wblfA==</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+</enviNFe>

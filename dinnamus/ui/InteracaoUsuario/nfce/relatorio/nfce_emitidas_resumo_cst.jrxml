@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfce_emitidas_resumo_cst" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="164deed6-99ee-4b2f-9843-a490469859ed">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="xPath">
+		<![CDATA[.]]>
+	</queryString>
+	<field name="CST" class="java.lang.String">
+		<fieldDescription><![CDATA[//det//CST[text()]]]></fieldDescription>
+	</field>
+	<field name="vBC_00" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det/imposto//ICMS00//vBC)]]></fieldDescription>
+	</field>
+	<field name="vICMS_00" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det/imposto//ICMS00//vICMS)]]></fieldDescription>
+	</field>
+	<field name="vProd" class="java.lang.String">
+		<fieldDescription><![CDATA[//det/prod/vProd]]></fieldDescription>
+	</field>
+	<field name="nItem" class="java.lang.String">
+		<fieldDescription><![CDATA[@nItem]]></fieldDescription>
+	</field>
+	<field name="nItem2" class="java.lang.String">
+		<fieldDescription><![CDATA[//det/@nItem]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement x="25" y="14" width="100" height="20" uuid="a87e37f1-e238-480b-a7db-d4d9949c1e69"/>
+				<textFieldExpression><![CDATA[$F{vBC_00}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="14" width="100" height="20" uuid="73fb15d2-46c4-4134-8abc-dbb9a6055cf6"/>
+				<textFieldExpression><![CDATA[$F{vICMS_00}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="89" splitType="Stretch"/>
+	</summary>
+</jasperReport>

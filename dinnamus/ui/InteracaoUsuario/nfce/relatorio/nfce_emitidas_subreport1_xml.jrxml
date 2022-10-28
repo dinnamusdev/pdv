@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfce_emitidas_subreport1_xml" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0" uuid="de5304c7-853c-4461-acde-e899958b9978">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="301"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="detalhes" uuid="d402eb6a-5484-4328-a03d-55ba7b288e4b">
+		<queryString language="xPath">
+			<![CDATA[//det]]>
+		</queryString>
+		<field name="codigo" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/cProd]]></fieldDescription>
+		</field>
+		<field name="descricao" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/xProd]]></fieldDescription>
+		</field>
+		<field name="lbaseIcms" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//vBC]]></fieldDescription>
+		</field>
+		<field name="lvalorIcms" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//vICMS]]></fieldDescription>
+		</field>
+		<field name="lvalorIpi" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/IPI/IPITrib/vIPI]]></fieldDescription>
+		</field>
+		<field name="ncm" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/NCM]]></fieldDescription>
+		</field>
+		<field name="cst" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//CST]]></fieldDescription>
+		</field>
+		<field name="orig" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//orig]]></fieldDescription>
+		</field>
+		<field name="cfop" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/CFOP]]></fieldDescription>
+		</field>
+		<field name="valorTotal" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/vProd]]></fieldDescription>
+		</field>
+		<field name="aliquotaIcms" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//pICMS]]></fieldDescription>
+		</field>
+		<field name="aliquotaIpi" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/IPI/IPITrib/pIPI]]></fieldDescription>
+		</field>
+		<field name="unidadeTributaria" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/uTrib]]></fieldDescription>
+		</field>
+		<field name="valorUnitarioComercial" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/vUnCom]]></fieldDescription>
+		</field>
+		<field name="quantidadeComercial" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/qCom]]></fieldDescription>
+		</field>
+		<field name="valorUnitarioTributario" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/vUnTrib]]></fieldDescription>
+		</field>
+		<field name="quantidadeTributaria" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/qTrib]]></fieldDescription>
+		</field>
+		<field name="unidadeComercial" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/uCom]]></fieldDescription>
+		</field>
+		<field name="valorICMSST" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//vICMSST]]></fieldDescription>
+		</field>
+		<field name="baseICMSST" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//vBCST]]></fieldDescription>
+		</field>
+		<field name="valorICMBC" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//vICMS]]></fieldDescription>
+		</field>
+		<field name="baseICMS" class="java.lang.String">
+			<fieldDescription><![CDATA[imposto/ICMS//vBC]]></fieldDescription>
+		</field>
+		<field name="ldesconto" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/vDesc]]></fieldDescription>
+		</field>
+		<field name="informacoesAdicionais" class="java.lang.String">
+			<fieldDescription><![CDATA[infAdProd]]></fieldDescription>
+		</field>
+		<field name="nItem" class="java.lang.String">
+			<fieldDescription><![CDATA[@nItem]]></fieldDescription>
+		</field>
+		<field name="vProd" class="java.lang.String">
+			<fieldDescription><![CDATA[prod/vProd]]></fieldDescription>
+		</field>
+		<variable name="TITULO_BC" class="java.lang.String" resetType="None">
+			<initialValueExpression><![CDATA["BASE CALC"]]></initialValueExpression>
+		</variable>
+		<variable name="sub_ICMS_00_BC_1" class="java.lang.Double" resetType="None" incrementType="Group" incrementGroup="group1" calculation="Sum">
+			<variableExpression><![CDATA[$F{cst}.equalsIgnoreCase("00") ? new Double($F{lbaseIcms}) : 0d]]></variableExpression>
+			<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+		</variable>
+		<group name="group1">
+			<groupExpression><![CDATA[$F{nItem}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString language="xPath">
+		<![CDATA[//det]]>
+	</queryString>
+	<field name="vBC" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vBC]]></fieldDescription>
+	</field>
+	<field name="vICMS" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vICMS]]></fieldDescription>
+	</field>
+	<field name="vNF" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vNF]]></fieldDescription>
+	</field>
+	<field name="vFrete" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vFrete]]></fieldDescription>
+	</field>
+	<field name="vOutro" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vOutro]]></fieldDescription>
+	</field>
+	<field name="vPIS" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vPIS]]></fieldDescription>
+	</field>
+	<field name="vCOFINS" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vCOFINS]]></fieldDescription>
+	</field>
+	<field name="vIPI" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vIPI]]></fieldDescription>
+	</field>
+	<field name="vDesc" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vDesc]]></fieldDescription>
+	</field>
+	<field name="vSeg" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vSeg]]></fieldDescription>
+	</field>
+	<field name="vST" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vST]]></fieldDescription>
+	</field>
+	<field name="vBCST" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vBCST]]></fieldDescription>
+	</field>
+	<field name="vProd" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vProd]]></fieldDescription>
+	</field>
+	<field name="vII" class="java.lang.String">
+		<fieldDescription><![CDATA[//ICMSTot/vII]]></fieldDescription>
+	</field>
+	<field name="Id" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/@Id]]></fieldDescription>
+	</field>
+	<field name="ICMS_BC" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/det/imposto/ICMS/ICMS00/vBC]]></fieldDescription>
+	</field>
+	<field name="ICMS_VL" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/det/imposto/ICMS/ICMS00/vICMS]]></fieldDescription>
+	</field>
+	<field name="vProdItem" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/det/prod/vProd]]></fieldDescription>
+	</field>
+	<field name="CST" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/det/imposto//CST]]></fieldDescription>
+	</field>
+	<field name="nNF" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/ide/nNF]]></fieldDescription>
+	</field>
+	<field name="nItem" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/det/@nItem]]></fieldDescription>
+	</field>
+	<field name="CST2" class="java.lang.String">
+		<fieldDescription><![CDATA[imposto//CST]]></fieldDescription>
+	</field>
+	<field name="bcicms" class="java.lang.String">
+		<fieldDescription><![CDATA[imposto//vBC]]></fieldDescription>
+	</field>
+	<field name="item" class="java.lang.String">
+		<fieldDescription><![CDATA[@nItem]]></fieldDescription>
+	</field>
+	<field name="ICMS_00_vBC" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det/imposto//ICMS00//vBC)]]></fieldDescription>
+	</field>
+	<field name="ICMS_00_vICMS" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det/imposto//ICMS00//vICMS)]]></fieldDescription>
+	</field>
+	<field name="ICMS_40_vBC" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMS40/CST='40']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMS40/CST='40']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMS40/CST='40']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_20_vBC" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det/imposto//ICMS20//vBC)]]></fieldDescription>
+	</field>
+	<field name="ICMS_20_vICMS" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det/imposto//ICMS20//vICMS)]]></fieldDescription>
+	</field>
+	<field name="ICMS_41_vBC" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMS40/CST='41']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMS40/CST='41']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMS40/CST='41']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_60_vBC" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMS60/CST='60']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMS60/CST='60']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMS60/CST='60']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_00_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMS00/CST='00']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMS00/CST='00']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMS00/CST='00']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_20_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMS20/CST='20']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMS20/CST='20']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMS20/CST='20']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_102_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMSSN102/CSOSN='102']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='102']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='102']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_103_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMSSN102/CSOSN='103']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='103']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='103']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_300_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMSSN102/CSOSN='300']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='300']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='300']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_400_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMSSN102/CSOSN='400']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='400']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMSSN102/CSOSN='400']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<field name="ICMS_500_vOP" class="java.lang.String">
+		<fieldDescription><![CDATA[sum(//det[imposto/ICMS/ICMSSN500/CSOSN='500']/prod/vProd)
+-
+sum(//det[imposto/ICMS/ICMSSN500/CSOSN='500']/prod/vDesc)
++
+sum(//det[imposto/ICMS/ICMSSN500/CSOSN='500']/prod/vOutro)]]></fieldDescription>
+	</field>
+	<variable name="sub_TOTAL_NF" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{vNF})]]></variableExpression>
+	</variable>
+	<variable name="sub_TOTAL_BC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{vBC})]]></variableExpression>
+	</variable>
+	<variable name="sub_TOTAL_ICMS" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{vICMS})]]></variableExpression>
+	</variable>
+	<variable name="sub_ICMS_00_VL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_00_vICMS})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_00_BC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_00_vBC})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="TITULO" class="java.lang.String">
+		<initialValueExpression><![CDATA["ICMS"]]></initialValueExpression>
+	</variable>
+	<variable name="teste" class="java.lang.String" calculation="Sum">
+		<initialValueExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("/nfeProc/NFe/infNFe/det/imposto/ICMS/ICMS00/vICMS")]]></initialValueExpression>
+	</variable>
+	<variable name="bcicms" class="java.lang.Double" resetType="None" incrementType="Report" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{bcicms})]]></variableExpression>
+	</variable>
+	<variable name="sub_ICMS_40_BC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_40_vBC})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_20_VL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_20_vICMS})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_20_BC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_20_vBC})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_41_BC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_41_vBC})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_60_BC" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_60_vBC})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_00_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_00_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_20_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_20_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_102_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_102_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_103_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_103_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_300_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_300_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_400_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_400_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="sub_ICMS_500_OP" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{ICMS_500_vOP})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="4" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="39" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="138" y="17" width="47" height="13" uuid="1183969f-bca2-439a-ac95-82c62c02b753"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vBC}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="235" y="17" width="48" height="13" uuid="c411640a-72d6-4da5-8322-d8c3c89a802b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vICMS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement key="VNF" x="52" y="17" width="48" height="13" uuid="3935f14e-b6f2-4dc7-a135-5b17a896a506"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vNF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="17" width="37" height="13" uuid="cf8edf28-0d1c-4ccf-ab29-f6e31f9e85c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[B.Calc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="17" width="50" height="13" uuid="2c966d8c-5d28-484d-b921-0a4783c08532"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ICMS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="2" width="44" height="11" uuid="b735e847-182c-4ed0-9310-117d6bab4ca5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tot. Prod]]></text>
+			</staticText>
+			<line>
+				<reportElement x="5" y="33" width="545" height="1" uuid="84334639-af60-48ed-b97a-bcd663b7d973"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="100" y="2" width="37" height="11" uuid="2ab2c3d1-24bc-43e6-b33d-984808bdee80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Frete(+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="2" width="44" height="11" uuid="dcbeda83-49a1-4fbb-a27e-721a253fc3d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Seguro(+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="2" width="44" height="11" uuid="af36a4ef-9002-41c7-a7f2-93a1700504cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desconto(-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="17" width="44" height="13" uuid="ac439724-2f60-4c51-b5c7-94e0a9a13bd9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="17" width="41" height="13" uuid="1aa4ed61-1d9b-409d-b63b-31d6deafa6b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="17" width="44" height="13" uuid="2d9f97fa-97fd-467b-ab70-e282b88a07ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COFINS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="2" width="50" height="11" uuid="037a5c91-9edc-4df1-a866-20aa57f56f01"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Out. Desp(+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="2" width="41" height="11" uuid="cfa477ff-70f3-48fb-9a4d-e6e32b14be57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPI(+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="17" width="44" height="13" uuid="cdbe9dc9-d94e-4d96-9a5f-875e2cd8ce80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor NF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="324" y="17" width="49" height="13" uuid="d20877d6-e873-4b73-a2fa-e56be55309cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vPIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="17" width="44" height="13" uuid="5abadde6-fd08-4a9d-929e-bba694f69059"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vCOFINS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="52" y="2" width="48" height="11" uuid="a63b3045-9d3d-4b8f-954c-68ab3cdcd8c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vProd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="2" width="47" height="11" uuid="2c87757e-e57e-465e-a5ad-e8ecd60baca7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vFrete}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="2" width="48" height="11" uuid="20462908-bd7c-493b-af7a-baf985b789b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vOutro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="2" width="49" height="11" uuid="3ddb405a-4430-4773-a677-d41be7343b9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vIPI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="2" width="45" height="11" uuid="40bdacf4-5d83-45df-811a-816815a6e22d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vDesc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="507" y="2" width="54" height="11" uuid="ffe0f82a-d34c-4b60-94a6-da34d437dabc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vSeg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="507" y="17" width="54" height="13" uuid="188a6dc0-c2bd-45a5-b0d4-8040cb66d06c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vII}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

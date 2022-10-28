@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4aa26b7e-7899-4b93-a579-d4df3c99e4ed">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<subDataset name="nfce_emitidas" uuid="2255361a-c4d7-49a6-a54e-9cd0e605f9e0">
+		<queryString>
+			<![CDATA[SELECT
+     off_nfce_pdv_notas."id" AS off_nfce_pdv_notas_id,
+     off_nfce_pdv_notas."id_nfce_pdv" AS off_nfce_pdv_notas_id_nfce_pdv,
+     off_nfce_pdv_notas."pdv" AS off_nfce_pdv_notas_pdv,
+     off_nfce_pdv_notas."ambiente" AS off_nfce_pdv_notas_ambiente,
+     off_nfce_pdv_notas."numero" AS off_nfce_pdv_notas_numero,
+     off_nfce_pdv_notas."serie" AS off_nfce_pdv_notas_serie,
+     off_nfce_pdv_notas."chave" AS off_nfce_pdv_notas_chave,
+     off_nfce_pdv_notas."chave_dv" AS off_nfce_pdv_notas_chave_dv,
+     off_nfce_pdv_notas."codigorandomico" AS off_nfce_pdv_notas_codigorandomico,
+     off_nfce_pdv_notas."emissao" AS off_nfce_pdv_notas_emissao,
+     off_nfce_pdv_notas."finalidade" AS off_nfce_pdv_notas_finalidade,
+     off_nfce_pdv_notas."TipoEmissao" AS off_nfce_pdv_notas_TipoEmissao,
+     off_nfce_pdv_notas."TipoImpressao" AS off_nfce_pdv_notas_TipoImpressao,
+     off_nfce_pdv_notas."IndicadorDePresenca" AS off_nfce_pdv_notas_IndicadorDePresenca,
+     off_nfce_pdv_notas."Protocolo" AS off_nfce_pdv_notas_Protocolo,
+     off_nfce_pdv_notas."DataHoraAutorizacao" AS off_nfce_pdv_notas_DataHoraAutorizacao,
+     off_nfce_pdv_notas."DadosQRCode" AS off_nfce_pdv_notas_DadosQRCode,
+     off_nfce_pdv_notas."codigovenda" AS off_nfce_pdv_notas_codigovenda,
+     off_nfce_pdv_notas."numeroprotocolo" AS off_nfce_pdv_notas_numeroprotocolo,
+     off_nfce_pdv_notas_canc."id" AS off_nfce_pdv_notas_canc_id,
+     off_nfce_pdv_notas_canc."id_nfce_pdv_notas" AS off_nfce_pdv_notas_canc_id_nfce_pdv_notas,
+     off_nfce_pdv_notas_canc."DataHora" AS off_nfce_pdv_notas_canc_DataHora,
+     off_nfce_pdv_notas_canc."Protocolo" AS off_nfce_pdv_notas_canc_Protocolo,
+     off_nfce_pdv_notas_canc."Motivo" AS off_nfce_pdv_notas_canc_Motivo,
+     off_nfce_pdv_notas_canc."XmlCancelamento" AS off_nfce_pdv_notas_canc_XmlCancelamento,
+     off_nfce_inutilizar."id" AS off_nfce_inutilizar_id,
+     off_nfce_inutilizar."pdv" AS off_nfce_inutilizar_pdv,
+     off_nfce_inutilizar."ano" AS off_nfce_inutilizar_ano,
+     off_nfce_inutilizar."cnpj" AS off_nfce_inutilizar_cnpj,
+     off_nfce_inutilizar."serie" AS off_nfce_inutilizar_serie,
+     off_nfce_inutilizar."numeroinicial" AS off_nfce_inutilizar_numeroinicial,
+     off_nfce_inutilizar."numerofinal" AS off_nfce_inutilizar_numerofinal,
+     off_nfce_inutilizar."justificativa" AS off_nfce_inutilizar_justificativa,
+     off_nfce_inutilizar."id_off_pdv_nota" AS off_nfce_inutilizar_id_off_pdv_nota
+,
+ (
+	CASE WHEN NOT off_nfce_pdv_notas_canc."Motivo" IS NULL 
+	THEN  'CANCELADA' 
+	ELSE  (CASE WHEN NOT off_nfce_inutilizar."id" IS NULL 
+		  THEN 'INUTILIZADA'
+		  ELSE 'NORMAL'
+		  END 
+	      )
+	END
+     )  AS STATUS
+FROM
+     "dbo"."off_nfce_pdv_notas" off_nfce_pdv_notas LEFT OUTER JOIN "dbo"."off_nfce_pdv_notas_canc" off_nfce_pdv_notas_canc ON off_nfce_pdv_notas."id_nfce_pdv" = off_nfce_pdv_notas_canc."id_nfce_pdv_notas"
+     LEFT OUTER JOIN "dbo"."off_nfce_inutilizar" off_nfce_inutilizar ON off_nfce_pdv_notas."id_nfce_pdv" = off_nfce_inutilizar."id_off_pdv_nota"
+ORDER BY off_nfce_pdv_notas."emissao"]]>
+		</queryString>
+		<field name="off_nfce_pdv_notas_id" class="java.lang.Long"/>
+		<field name="off_nfce_pdv_notas_id_nfce_pdv" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_pdv" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_ambiente" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_numero" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_serie" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_chave" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_chave_dv" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_codigorandomico" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_emissao" class="java.sql.Timestamp"/>
+		<field name="off_nfce_pdv_notas_finalidade" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_TipoEmissao" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_TipoImpressao" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_IndicadorDePresenca" class="java.lang.Integer"/>
+		<field name="off_nfce_pdv_notas_Protocolo" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_DataHoraAutorizacao" class="java.sql.Timestamp"/>
+		<field name="off_nfce_pdv_notas_DadosQRCode" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_codigovenda" class="java.lang.Long"/>
+		<field name="off_nfce_pdv_notas_numeroprotocolo" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_canc_id" class="java.lang.Long"/>
+		<field name="off_nfce_pdv_notas_canc_id_nfce_pdv_notas" class="java.lang.Long"/>
+		<field name="off_nfce_pdv_notas_canc_DataHora" class="java.sql.Timestamp"/>
+		<field name="off_nfce_pdv_notas_canc_Protocolo" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_canc_Motivo" class="java.lang.String"/>
+		<field name="off_nfce_pdv_notas_canc_XmlCancelamento" class="java.sql.Blob"/>
+		<field name="off_nfce_inutilizar_id" class="java.lang.Integer"/>
+		<field name="off_nfce_inutilizar_pdv" class="java.lang.Integer"/>
+		<field name="off_nfce_inutilizar_ano" class="java.lang.String"/>
+		<field name="off_nfce_inutilizar_cnpj" class="java.lang.String"/>
+		<field name="off_nfce_inutilizar_serie" class="java.lang.String"/>
+		<field name="off_nfce_inutilizar_numeroinicial" class="java.lang.String"/>
+		<field name="off_nfce_inutilizar_numerofinal" class="java.lang.String"/>
+		<field name="off_nfce_inutilizar_justificativa" class="java.lang.String"/>
+		<field name="off_nfce_inutilizar_id_off_pdv_nota" class="java.lang.Long"/>
+		<field name="STATUS" class="java.lang.String"/>
+		<group name="group1"/>
+	</subDataset>
+	<subDataset name="dataset1" uuid="66b12f8c-ed95-4556-aac5-3064cb3e0c5e"/>
+	<parameter name="DATA_INICIAL" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATA_FINAL" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SITUACAO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_NOME" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\DTI\\DinnamuS_2\\app\\DinnamuS\\src\\dinnamus\\ui\\InteracaoUsuario\\nfce\\relatorio\\nfce_emitidas_subreport1_xml.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_NOME_1" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\DTI\\DinnamuS_2\\app\\DinnamuS\\src\\dinnamus\\ui\\InteracaoUsuario\\nfce\\relatorio\\nfce_emitidas_resumo_cst.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="REPOSITORIO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     off_nfce_pdv_notas.id AS off_nfce_pdv_notas_id,
+     off_nfce_pdv_notas.id_nfce_pdv AS off_nfce_pdv_notas_id_nfce_pdv,
+     off_nfce_pdv_notas.pdv AS off_nfce_pdv_notas_pdv,
+     off_nfce_pdv_notas.ambiente AS off_nfce_pdv_notas_ambiente,
+     off_nfce_pdv_notas.numero AS off_nfce_pdv_notas_numero,
+     off_nfce_pdv_notas.serie AS off_nfce_pdv_notas_serie,
+     off_nfce_pdv_notas.chave AS off_nfce_pdv_notas_chave,
+     off_nfce_pdv_notas.chave_dv AS off_nfce_pdv_notas_chave_dv,
+     off_nfce_pdv_notas.codigorandomico AS off_nfce_pdv_notas_codigorandomico,
+     off_nfce_pdv_notas.emissao AS off_nfce_pdv_notas_emissao,
+     off_nfce_pdv_notas.finalidade AS off_nfce_pdv_notas_finalidade,
+     off_nfce_pdv_notas.TipoEmissao AS off_nfce_pdv_notas_TipoEmissao,
+     off_nfce_pdv_notas.TipoImpressao AS off_nfce_pdv_notas_TipoImpressao,
+     off_nfce_pdv_notas.IndicadorDePresenca AS off_nfce_pdv_notas_IndicadorDePresenca,
+     off_nfce_pdv_notas.Protocolo AS off_nfce_pdv_notas_Protocolo,
+     off_nfce_pdv_notas.DataHoraAutorizacao AS off_nfce_pdv_notas_DataHoraAutorizacao,
+     off_nfce_pdv_notas.DadosQRCode AS off_nfce_pdv_notas_DadosQRCode,
+     off_nfce_pdv_notas.codigovenda AS off_nfce_pdv_notas_codigovenda,
+     off_nfce_pdv_notas.numeroprotocolo AS off_nfce_pdv_notas_numeroprotocolo,
+     off_nfce_pdv_notas_canc.DataHora AS off_nfce_pdv_notas_canc_DataHora,
+     off_nfce_pdv_notas_canc.Protocolo AS off_nfce_pdv_notas_canc_Protocolo,
+     off_nfce_pdv_notas_canc.Motivo AS off_nfce_pdv_notas_canc_Motivo,
+     off_nfce_inutilizar.id AS off_nfce_inutilizar_id,
+     off_nfce_pdv_notas_cpl.xmlnfe AS off_nfce_pdv_notas_cpl_xmlnfe,
+ (
+	CASE WHEN NOT off_nfce_pdv_notas_canc.Motivo IS NULL 
+	THEN  'CANCELADA' 
+	ELSE  (CASE WHEN NOT off_nfce_inutilizar.id IS NULL 
+		  THEN 'INUTILIZADA'
+		  ELSE  ( 
+		     CASE 
+   		        WHEN off_nfce_pdv_notas.numeroprotocolo ='ENVIO CANC.'  
+	   	        THEN  'ENVIO CANC.' 
+		        ELSE 'NORMAL' 
+	    	     END
+		       )
+		  END 
+	      )
+	END
+     )  AS STATUS
+FROM
+     OFF_NFCE_PDV_NOTAS OFF_NFCE_PDV_NOTAS LEFT OUTER JOIN  OFF_NFCE_PDV_NOTAS_CANC  off_nfce_pdv_notas_canc ON OFF_NFCE_PDV_NOTAS.id = off_nfce_pdv_notas_canc.id_nfce_pdv_notas
+     LEFT OUTER JOIN  OFF_NFCE_INUTILIZAR off_nfce_inutilizar ON OFF_NFCE_PDV_NOTAS.id = off_nfce_inutilizar.id_off_pdv_nota
+     INNER JOIN  OFF_NFCE_PDV_NOTAS_CPL off_nfce_pdv_notas_cpl ON OFF_NFCE_PDV_NOTAS.id = off_nfce_pdv_notas_cpl.id_nfce_pdv_notas
+WHERE
+     OFF_NFCE_PDV_NOTAS.EMISSAO >= $P{DATA_INICIAL}
+ AND OFF_NFCE_PDV_NOTAS.EMISSAO <= $P{DATA_FINAL} AND
+ $P{SITUACAO} like  
+  (
+	CASE WHEN NOT off_nfce_pdv_notas_canc.Motivo IS NULL 
+	THEN  '%CANCELADA%' 
+	ELSE  (CASE WHEN NOT off_nfce_inutilizar.id IS NULL 
+		  THEN '%INUTILIZADA%'
+		  ELSE ( 
+		     CASE 
+   		        WHEN off_nfce_pdv_notas.numeroprotocolo ='ENVIO CANC.'  
+	   	        THEN  '%ENVIO CANC.%' 
+		        ELSE '%NORMAL%' 
+	    	     END
+		       )
+		  END 
+	      )
+	END
+     ) 
+
+ORDER BY
+    (
+	CASE WHEN NOT off_nfce_pdv_notas_canc.Motivo IS NULL 
+	THEN  'CANCELADA' 
+	ELSE  (CASE WHEN NOT off_nfce_inutilizar.id IS NULL 
+		  THEN 'INUTILIZADA'
+		  ELSE ( 
+		     CASE 
+   		        WHEN off_nfce_pdv_notas.numeroprotocolo ='ENVIO CANC.'  
+	   	        THEN  'ENVIO CANC.' 
+		        ELSE 'NORMAL' 
+	    	     END
+		       )
+		  END 
+	      )
+	END
+     ) DESC ,
+     OFF_NFCE_PDV_NOTAS.EMISSAO ASC]]>
+	</queryString>
+	<field name="OFF_NFCE_PDV_NOTAS_ID" class="java.lang.Long"/>
+	<field name="OFF_NFCE_PDV_NOTAS_ID_NFCE_PDV" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_PDV" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_AMBIENTE" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_NUMERO" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_SERIE" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CHAVE" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CHAVE_DV" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CODIGORANDOMICO" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_EMISSAO" class="java.sql.Timestamp"/>
+	<field name="OFF_NFCE_PDV_NOTAS_FINALIDADE" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_TIPOEMISSAO" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_TIPOIMPRESSAO" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_INDICADORDEPRESENCA" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_PROTOCOLO" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_DATAHORAAUTORIZACAO" class="java.sql.Timestamp"/>
+	<field name="OFF_NFCE_PDV_NOTAS_DADOSQRCODE" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CODIGOVENDA" class="java.lang.Long"/>
+	<field name="OFF_NFCE_PDV_NOTAS_NUMEROPROTOCOLO" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CANC_DATAHORA" class="java.sql.Timestamp"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CANC_PROTOCOLO" class="java.lang.String"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CANC_MOTIVO" class="java.lang.String"/>
+	<field name="OFF_NFCE_INUTILIZAR_ID" class="java.lang.Integer"/>
+	<field name="OFF_NFCE_PDV_NOTAS_CPL_XMLNFE" class="java.sql.Blob"/>
+	<field name="STATUS" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<variable name="Cancelada" class="java.lang.String">
+		<variableExpression><![CDATA[($F{OFF_NFCE_PDV_NOTAS_CANC_MOTIVO}!=null ? "CANCELADA"  : "")]]></variableExpression>
+	</variable>
+	<variable name="Inutilizada" class="java.lang.String">
+		<variableExpression><![CDATA[($F{OFF_NFCE_INUTILIZAR_ID}!=null ? "INUTILIZADA"  : "")]]></variableExpression>
+	</variable>
+	<variable name="status" class="java.lang.String">
+		<variableExpression><![CDATA[$V{Cancelada} + $V{Inutilizada}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_NF_GERAL" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="TOTAL_BC_GERAL" class="java.lang.Double" calculation="Sum"/>
+	<variable name="TOTAL_BC_ICMS" class="java.lang.Double" calculation="Sum"/>
+	<variable name="VALOR_NF" class="java.lang.Double" resetType="Group" resetGroup="nota" incrementType="Group" incrementGroup="nota" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="VALOR_ICMS" class="java.lang.Double"/>
+	<variable name="VALOR_BC_ICMS" class="java.lang.Double"/>
+	<variable name="TOTAL_NF_NORMAL" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$V{VALOR_NF}]]></variableExpression>
+		<initialValueExpression><![CDATA[0D]]></initialValueExpression>
+	</variable>
+	<variable name="STATUS_FINAL" class="java.lang.String"/>
+	<variable name="TOTAL_NF_POR_STATUS" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="TOTAL_BC_POR_STATUS" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="TOTAL_ICMS_POR_STATUS" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="QT_POR_STATUS" class="java.lang.Integer" resetType="Group" resetGroup="STATUS" calculation="Count"/>
+	<variable name="totsub_ICMS_00_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_00_VL" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_10_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_10_VL" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_20_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_20_VL" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_30_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_30_VL" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum"/>
+	<variable name="totsub_ICMS_40_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_41_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_60_BC" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_00_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_20_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_102_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_103_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_300_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_400_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="totsub_ICMS_500_OP" class="java.lang.Double" resetType="Group" resetGroup="STATUS" calculation="Sum">
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="ExibirResumoCST_Normal" class="java.lang.Double" resetType="Group" resetGroup="STATUS">
+		<variableExpression><![CDATA[$V{totsub_ICMS_00_OP}+
+$V{totsub_ICMS_20_OP}+
+$V{totsub_ICMS_40_BC}+
+$V{totsub_ICMS_41_BC}+
+$V{totsub_ICMS_60_BC}]]></variableExpression>
+		<initialValueExpression><![CDATA[0d]]></initialValueExpression>
+	</variable>
+	<variable name="TotalResumoCST_Simples" class="java.lang.Double" resetType="Group" resetGroup="STATUS">
+		<variableExpression><![CDATA[$V{totsub_ICMS_102_OP}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="STATUS">
+		<groupExpression><![CDATA[$F{STATUS}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<rectangle>
+					<reportElement uuid="38b8a6b0-933b-44fc-a3df-cf5c2dc5820a" x="0" y="2" width="555" height="20" backcolor="#E8E8E8"/>
+				</rectangle>
+				<textField>
+					<reportElement uuid="a6eb43d5-2277-4f0e-b941-9d03e7a4e5dd" x="61" y="5" width="213" height="12"/>
+					<textElement>
+						<font fontName="Arial" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="bdf862d7-9949-4b28-89b8-8f2eff279601" x="5" y="5" width="77" height="12"/>
+					<textElement>
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SITUAÇÃO: ]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1"/>
+			<band height="104">
+				<printWhenExpression><![CDATA[($V{totsub_ICMS_00_OP}
++
+$V{totsub_ICMS_20_OP}
++
+$V{totsub_ICMS_40_BC}
++
+$V{totsub_ICMS_41_BC}
++
+$V{totsub_ICMS_60_BC})>0d]]></printWhenExpression>
+				<rectangle>
+					<reportElement uuid="72bd304d-744f-423b-b510-72acc7b3296b" mode="Opaque" x="80" y="18" width="412" height="77" backcolor="#E8E8E8"/>
+				</rectangle>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="07525256-aa9b-4522-b3db-93bc99f8d46d" x="163" y="56" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_00_BC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="f3c8fb39-dd7a-4795-a83f-faf3a6b7c4aa" x="90" y="56" width="70" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[B.CALC]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0e37a5a5-b5ee-49f3-aaea-62f9c8014d94" x="90" y="75" width="70" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IMPOSTO]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="67823a9b-dd6d-49b3-835d-f0885dac45dc" x="163" y="75" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_00_VL}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="9f7c0ab5-dc26-44e5-a38d-1b12a853f38c" x="87" y="20" width="73" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TRIB.NORMAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6f48eb39-c08c-483a-a5b9-df10660ce2ea" x="163" y="20" width="59" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[00]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="c1c97bbd-26f0-44d8-beeb-04291a623064" x="291" y="38" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_40_BC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="b4a39427-919d-4f28-bbbd-4b2f2138adda" x="227" y="20" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[20]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="42c126ee-52a5-4c78-a7b3-2fb24ebe5592" x="291" y="20" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[40]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0c90a07b-b4b0-4cfb-a7ce-7209ab6a0f62" x="358" y="20" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[41]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="baf2d8be-2fad-46a7-9f87-6e8d80d86e14" x="425" y="20" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[60]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="a8dde147-0096-4883-96c7-56dd58a47af8" x="80" y="35" width="412" height="1"/>
+				</line>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="87fef13a-f313-4d91-9fe7-75a3b27677fd" x="227" y="75" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_20_VL}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="3a7e95f5-fbaf-42d6-87e6-4c65fae9bb22" x="227" y="56" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_20_BC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="d4cfbd12-68af-453f-abbf-807bd2faf8ab" x="358" y="38" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_41_BC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="6197f8c0-028e-4d25-9bb6-65c2c21c8de5" x="425" y="38" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_60_BC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="52957ad4-695a-48c8-b09a-5c0922434f1a" x="90" y="38" width="70" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VL.OPERAÇÃO]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="49be7426-3f1e-449b-9fef-aa734688a01a" x="163" y="38" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_00_OP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="98c22d32-3ffc-42e0-9f97-0dfb4eeeea3d" x="227" y="38" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_20_OP}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="faee5955-e182-4fc1-93a2-aa835911365e" x="395" y="5" width="96" height="12"/>
+					<textElement rotation="None">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="70df1507-5c61-4a90-9813-0ef62f6e8b40" x="80" y="5" width="125" height="12"/>
+					<textElement rotation="None">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL GERAL POR CST]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d76db870-9e12-4b58-87ee-22a4e411ac95" x="267" y="5" width="125" height="12"/>
+					<textElement textAlignment="Right" rotation="None">
+						<font fontName="Arial" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[EMISSAO]]></text>
+				</staticText>
+			</band>
+			<band height="85">
+				<printWhenExpression><![CDATA[($V{totsub_ICMS_102_OP}
++
+$V{totsub_ICMS_103_OP}
++
+$V{totsub_ICMS_300_OP}
++
+$V{totsub_ICMS_400_OP}
++
+$V{totsub_ICMS_500_OP})>0d]]></printWhenExpression>
+				<rectangle>
+					<reportElement uuid="a6e45f21-ebab-460c-a6bc-cbcbb82ba6e1" mode="Opaque" x="84" y="21" width="412" height="49" backcolor="#E8E8E8"/>
+				</rectangle>
+				<textField>
+					<reportElement uuid="228f471b-c7d5-4eeb-9976-390422c3f349" x="416" y="8" width="79" height="12"/>
+					<textElement rotation="None">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="777696f0-a40c-4db8-8c24-37db5bd33be6" x="83" y="8" width="125" height="12"/>
+					<textElement rotation="None">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL GERAL POR CST]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="6e08a281-dd11-4ac9-b935-a0a78578b3a0" x="84" y="40" width="412" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="e08fb621-885a-44ef-9e58-aef13adfb35e" x="85" y="24" width="88" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TRIB. SIMPLES(ME)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b0c16797-bbb5-4ebe-be93-243df8369a0d" x="173" y="24" width="59" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[102]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a9e83448-903b-487b-b268-95e1e9e843ce" x="237" y="24" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[103]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="034ff3ca-d5f1-4a40-b499-97cfb7405181" x="301" y="24" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[300]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="84306f2b-8059-495a-b742-03b306f5e28b" x="368" y="24" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[400]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4fa1bdc9-620f-45f0-840a-3d5cb0e1ddf2" x="435" y="24" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[500]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ec6abbd0-e75c-4163-8deb-44aabc7bf6e5" x="87" y="43" width="86" height="17"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VL.OPERAÇÃO]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="d4d8aecf-ba7e-4a57-a062-e36e337b2c19" x="174" y="43" width="58" height="17"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_102_OP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="688623bd-4641-4615-a7d9-15edcb74767a" x="237" y="46" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_103_OP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="60fe71d4-d26c-4e75-b499-d751c8b98f4e" x="301" y="46" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_300_OP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="15e53acd-66cb-47bf-ada2-a09a7d144a26" x="368" y="46" width="61" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_400_OP}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="d2f434bf-5fcd-402e-9f3d-2f9be956cbb2" x="435" y="46" width="60" height="14"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totsub_ICMS_500_OP}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="60dd1940-a94a-493c-8db1-d68775ff6ea2" x="288" y="8" width="125" height="12"/>
+					<textElement textAlignment="Right" rotation="None">
+						<font fontName="Arial" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[EMISSAO]]></text>
+				</staticText>
+			</band>
+			<band height="38">
+				<rectangle>
+					<reportElement uuid="3f11ffdf-c034-4138-8298-4c3aaa8b8647" x="2" y="4" width="552" height="31" backcolor="#E8E8E8"/>
+				</rectangle>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="6db82786-0895-4fea-a512-9134520f441d" x="220" y="19" width="61" height="16"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_NF_POR_STATUS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="585b4002-db22-4a25-8812-0ec11746046b" x="90" y="5" width="174" height="13"/>
+					<textElement>
+						<font fontName="Arial" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="efcdc29d-8bfc-42a3-8cf5-ecd578cf130b" x="362" y="19" width="57" height="13"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_BC_POR_STATUS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="f40ed47c-9a34-4644-9407-2898dd5767f4" x="151" y="19" width="69" height="14"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VL.OPERAÇÃO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="df5fc14c-eade-4232-9403-4b3e9ecc8f7d" x="1" y="19" width="98" height="14"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[QT TOTAL EMITIDAS ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="66f7dc4b-3d11-40b2-b87e-65add0bdadd2" x="419" y="19" width="54" height="14"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOT ICMS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3b34bae7-21bf-40ea-9342-1cb72ad35cbb" x="283" y="19" width="79" height="14"/>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOT BASE CALC]]></text>
+				</staticText>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="bf0fad33-08da-4d75-916f-6beac6f8f117" x="471" y="19" width="84" height="13"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_ICMS_POR_STATUS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="597677da-3762-4172-a5c5-9f387368a1d7" x="99" y="19" width="52" height="13"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{QT_POR_STATUS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="ffc87526-3351-4999-b2ad-f56ca4f2a699" x="5" y="5" width="78" height="13"/>
+					<textElement>
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL GERAL : ]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="nota">
+		<groupExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_ID}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="3f472908-c432-45df-9ec1-839fee09e108" mode="Transparent" x="1" y="2" width="555" height="30" backcolor="#E8E8E8"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="eaf31982-57d5-4377-80bb-88241e52f006" x="4" y="2" width="380" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NFC-e EMITIDAS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="e516afea-fcc7-4a8e-938c-fcde3207cf0e" x="82" y="19" width="51" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_FINAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="64f33de0-2c0f-4b10-8f09-b64d1fe09ae8" x="37" y="19" width="35" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_INICIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2a1749c7-6f67-4fae-987a-afcc33037330" x="72" y="19" width="10" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c1c07779-6432-4e67-95bc-5494eece92c6" x="383" y="5" width="149" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="4ddc63d9-529c-4ef4-b7a7-1df1ad79220d" x="532" y="5" width="21" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="4ef14936-b9bb-4ef2-bdb5-beb910cb481a" x="473" y="15" width="42" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="979edebd-72b3-4df7-a4c9-3362bb11c424" x="515" y="15" width="39" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f81dc0da-ab6a-4e2c-9383-a314a5299860" x="435" y="15" width="36" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Emitido :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f242849-58ae-4767-a2ce-eb16fb1666dc" x="151" y="18" width="201" height="13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPOSITORIO: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2555dbf1-5a43-4cae-a101-424c874bcea9" x="358" y="18" width="71" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPOSITORIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7708fdb6-da9a-49c7-9897-25ba5eec7452" x="1" y="10" width="37" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b12b8a1-249e-4437-8fc9-189a17479019" x="39" y="10" width="19" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="94867552-7b4b-4a87-bcca-4e5011ea99b2" x="184" y="10" width="53" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emissão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b79a7eec-2bcc-477a-b25b-13f20d5b9889" x="261" y="10" width="72" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autorização]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4911b2ee-3fcd-452b-a93d-33e40c63553b" x="335" y="10" width="67" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Protocolo]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="48b7b9b1-4cf7-4e24-a5e7-be23a846034c" x="0" y="5" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="822e3dca-3158-4912-8038-f05d5bc20573" x="0" y="23" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="66d6eb85-be17-4b32-ae02-b5c334ded9e2" x="61" y="10" width="123" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chave]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b5ce8457-658c-46b5-aab7-7c6459cc7385" x="406" y="9" width="34" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tp.Emiss]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56ca7933-c350-4630-ad5f-2780b7990d47" x="445" y="9" width="46" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7984f494-f201-4ccf-8757-9f70efe460d0" x="0" y="-13" width="33" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIODO ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="53d50b65-730c-4421-86e0-6848dabbb059" x="39" y="4" width="16" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_SERIE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="54a25162-e6b7-4d65-bbfa-f4fa2a8eeb1b" x="185" y="4" width="75" height="12"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_EMISSAO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
+				<reportElement uuid="27198c66-a433-4aa5-b8fc-2b56d51fe510" x="260" y="4" width="72" height="12">
+					<printWhenExpression><![CDATA[$F{STATUS}.equalsIgnoreCase("NORMAL")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_DATAHORAAUTORIZACAO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6f275e56-55a8-47bc-b415-9381fa728923" x="336" y="4" width="67" height="12">
+					<printWhenExpression><![CDATA[$F{STATUS}.equalsIgnoreCase("NORMAL")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_NUMEROPROTOCOLO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="709639ae-7537-4184-a023-9e8f8dd8aae4" x="406" y="4" width="34" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{OFF_NFCE_PDV_NOTAS_TIPOEMISSAO}==1 ? "NORMAL" : "CONTINGENCIA")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a8f14d4f-dbfe-4b01-8b39-de48c1e01e49" x="4" y="4" width="34" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_NUMERO}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false">
+				<reportElement uuid="c41bf2ef-7b9d-4f48-9628-c040312581aa" x="2" y="16" width="547" height="37" isPrintInFirstWholeBand="true"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRXmlDataSource($F{OFF_NFCE_PDV_NOTAS_CPL_XMLNFE}.getBinaryStream())]]></dataSourceExpression>
+				<returnValue subreportVariable="sub_TOTAL_NF" toVariable="TOTAL_NF_GERAL" calculation="Sum"/>
+				<returnValue subreportVariable="sub_TOTAL_BC" toVariable="TOTAL_BC_GERAL" calculation="Sum"/>
+				<returnValue subreportVariable="sub_TOTAL_ICMS" toVariable="TOTAL_BC_ICMS" calculation="Sum"/>
+				<returnValue subreportVariable="sub_TOTAL_NF" toVariable="TOTAL_NF_POR_STATUS" calculation="Sum"/>
+				<returnValue subreportVariable="sub_TOTAL_BC" toVariable="TOTAL_BC_POR_STATUS" calculation="Sum"/>
+				<returnValue subreportVariable="sub_TOTAL_ICMS" toVariable="TOTAL_ICMS_POR_STATUS" calculation="Sum"/>
+				<returnValue subreportVariable="sub_TOTAL_NF" toVariable="QT_POR_STATUS" calculation="Count"/>
+				<returnValue subreportVariable="sub_ICMS_00_BC" toVariable="totsub_ICMS_00_BC" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_00_VL" toVariable="totsub_ICMS_00_VL" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_40_BC" toVariable="totsub_ICMS_40_BC" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_20_BC" toVariable="totsub_ICMS_20_BC" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_20_VL" toVariable="totsub_ICMS_20_VL" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_41_BC" toVariable="totsub_ICMS_41_BC" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_60_BC" toVariable="totsub_ICMS_60_BC" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_00_OP" toVariable="totsub_ICMS_00_OP" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_20_OP" toVariable="totsub_ICMS_20_OP" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_102_OP" toVariable="totsub_ICMS_102_OP" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_103_OP" toVariable="totsub_ICMS_103_OP" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_300_OP" toVariable="totsub_ICMS_300_OP" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_400_OP" toVariable="totsub_ICMS_400_OP" calculation="Sum"/>
+				<returnValue subreportVariable="sub_ICMS_500_OP" toVariable="totsub_ICMS_500_OP" calculation="Sum"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_NOME}]]></subreportExpression>
+			</subreport>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="7f7e1638-7589-49fd-9057-48ba614dad23" x="61" y="2" width="113" height="17"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OFF_NFCE_PDV_NOTAS_CHAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e1342de9-8eaf-40ff-a2c3-0bc2a3607c5f" x="445" y="4" width="70" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1931fddb-8d55-4221-a1a7-70076ef46e7c" x="2" y="1" width="100" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[DinnamuS PDV 2.0]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="11b0c088-7948-4dab-b9b8-6cdfaeee1297" x="0" y="0" width="552" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="87">
+			<rectangle>
+				<reportElement uuid="18b35f15-2d5d-44e5-abc7-d6b97753baa7" mode="Transparent" x="0" y="5" width="556" height="44" backcolor="#E8E8E8"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="427d90df-6a51-43d8-ab7d-160bcfbe4b99" x="5" y="25" width="98" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QT TOTAL EMITIDAS ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="43dfcffb-8f83-4b21-9bbf-a2aa96a78c51" x="103" y="25" width="48" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="2bd20e1d-9add-4e67-8946-bd4badf5a038" x="1" y="2" width="555" height="1"/>
+			</line>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="14117f08-3736-444a-98b6-ceb9f705ea5c" x="220" y="25" width="61" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_NF_GERAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8b685026-f729-471f-b18c-65b96f49f10b" x="151" y="25" width="69" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE NFCe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6eb24dff-f24a-4f75-ad60-5cf9e4753be0" x="281" y="25" width="79" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOT BASE CALC]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="32f1f53e-3bfa-4e62-b378-b6a57d71c545" x="359" y="25" width="58" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_BC_GERAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6415b0ad-a61e-44a6-8431-616100c2d86f" x="417" y="25" width="54" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOT ICMS]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="5c093ec7-aa7e-4665-a2b1-f357ca0e6c3f" x="471" y="25" width="81" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_BC_ICMS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4cdc3a1b-4767-464e-a11a-4cfa06dfeaa9" x="4" y="7" width="124" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL GERAL]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
